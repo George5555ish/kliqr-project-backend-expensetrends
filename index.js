@@ -29,7 +29,7 @@ db.connect(function(err) {
   app.use('/transactions', transactionRoute);
   app.use('/user', userRoute);
 
-app.get('/', (req, res)=> res.send('Get request successful!'));
+// app.get('/', (req, res)=> res.send('Get request successful!'));
 
 
 app.listen(3000, (req, res)=> console.log('Server started!'));
