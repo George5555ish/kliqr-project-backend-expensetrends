@@ -1,13 +1,6 @@
 
 const mysql2 = require('mysql2');
-const db = mysql2.createConnection({
-    user: 'sql10402904',
-    host: 'sql10.freemysqlhosting.net',
-    password: 'pqiZUFlieb',
-    database: 'sql10402904',
-    port:3306
-
-});
+const db = require('../db')
 
 db.connect(function(err) {
     if (err) throw err;
@@ -39,7 +32,7 @@ const getTransactions = (req, res) => {
             console.log(err)
         } else {
           
-            res.json({result});
+            res.json({"data" :result});
             
         }
     })

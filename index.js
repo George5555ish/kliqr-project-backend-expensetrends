@@ -1,9 +1,15 @@
 const express = require('express');
-const mysql = require('mysql');
-const mysql2 = require('mysql2');
+
 const cors = require('cors');
 
+let db = require('./db');
 const app = express();
+
+
+db.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 const transactionRoute = require('./routes/transactionRoute');
 const userRoute = require('./routes/userRoute');
@@ -12,19 +18,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
-const db = mysql2.createConnection({
-    user: 'sql10402904',
-    host: 'sql10.freemysqlhosting.net',
-    password: 'pqiZUFlieb',
-    database: 'sql10402904',
-    port:3306
 
-});
-
-db.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
 
   app.use('/transactions', transactionRoute);
   app.use('/user', userRoute);
